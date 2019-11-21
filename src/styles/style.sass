@@ -1,0 +1,55 @@
+@import "../../node_modules/bulma/bulma.sass"
+@import '../../node_modules/bulma-checkradio/dist/css/bulma-checkradio.sass'
+
+#register
+  max-width: 500px
+
+#fondo
+  position: fixed
+  bottom: 0
+  roght: 0
+  z-index: -1
+
+#topbar
+  background-color: transparent
+  .navbar-item.is-active
+    border-bottom: 1px solid $primary
+    background-color: $light
+.is-narrow
+  max-width: #{$tablet / 2}
+
+.is-loading
+  position: relative
+  *
+    filter: blur(2px)
+    opacity: .9
+  &::after
+    font-family: monospace
+    content: 'Cargando'
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    animation: cargando 2s infinite
+
+@keyframes cargando
+  0%
+    content: 'Cargando'
+  12%
+    content: 'cArgando'
+  24%
+    content: 'caRgando'
+  36%
+    content: 'carGando'
+  48%
+    content: 'cargAndo'
+  60%
+    content: 'cargaNdo'
+  72%
+    content: 'carganDo'
+  84%
+    content: 'cargandO'
