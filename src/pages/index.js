@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+
 import Nav from '../components/Nav'
 import RegisterForm from '../components/RegisterForm'
 import '../styles/style.sass'
 
 import { items } from '../config/nav'
+import { withRedux } from '../lib/redux'
 
-export default function Home () {
+export function Home () {
+  const router = useRouter()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    router.prefetch('/perfil/contacto')
+  }, [])
+
+  function onRegister (data) {
+    dispatch({
+      type: 'SET',
+      where: 'perfil',
+      name: 'email',
+      value: data.email
+    })
+    router.push('/perfil/contacto')
+  }
+
   return (
     <React.Fragment>
       <Nav items={items} active={'portada'}/>
@@ -39,9 +60,11 @@ export default function Home () {
       </section>
       <section className="section">
         <div className="container" >
-          <RegisterForm/>
+          <RegisterForm onRegister={onRegister} onLogin={onRegister} />
         </div>
       </section>
     </React.Fragment>
   )
 }
+
+export default withRedux(Home)

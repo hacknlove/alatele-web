@@ -10,7 +10,7 @@ const actions = {
 }
 
 storiesOf('LoginForm', module)
-  .add('default', () => <LoginForm {...actions} />)
+  .add('hidden', () => <LoginForm {...actions} />)
   .add('visible', () => <LoginForm active {...actions} />)
   .add('emailSet', () => <LoginForm active defaultValues={{ email: 'user@example.com' }} {...actions} />)
   .add('loading', () => <LoginForm active loading {...actions} />)

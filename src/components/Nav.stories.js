@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { withKnobs, object, text } from "@storybook/addon-knobs";
+import { withKnobs, object, text, boolean } from "@storybook/addon-knobs";
 
 import { NavComponent } from './Nav'
 
@@ -25,4 +25,9 @@ storiesOf('Nav', module)
     active={text('active', 'HOLA')}
     onGoto={action('onGoto')}
     onPrefetch={action('onPrefetch')}
+  />)
+  .add('lateral', () => <NavComponent
+    items={[]}
+    lateralActive={boolean('lateralActive', false)}
+    toggleLateral={action('toggleLateral')}
   />)

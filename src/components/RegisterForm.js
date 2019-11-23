@@ -1,7 +1,7 @@
-import useForm from 'react-hook-form'
 import React, { useState } from 'react'
+import useForm from 'react-hook-form'
 
-import LoginForm from '../containers/LoginFormContainer'
+import LoginForm from './LoginForm'
 
 export default function RegisterForm ({ onRegister, onLogin, defaultValues, loading }) {
   const { register, handleSubmit, errors } = useForm({
@@ -84,7 +84,7 @@ export default function RegisterForm ({ onRegister, onLogin, defaultValues, load
       <LoginForm
         active={loginActive}
         onCancel={() => setloginActive(false)}
-        onSubmit={onLogin}
+        onLogin={onLogin}
       />
     </div>
   )

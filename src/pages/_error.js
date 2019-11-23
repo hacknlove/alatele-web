@@ -4,10 +4,12 @@ import Nav from '../components/Nav'
 import '../styles/style.sass'
 import Link from 'next/link'
 
+import { items } from '../config/nav';
+
 export default function CustomError ({ statusCode }) {
   return (
     <React.Fragment>
-      <Nav />
+      <Nav items={items} />
       <section className="section">
         <div className="container" >
           <div className="is-narrow">
@@ -17,7 +19,9 @@ export default function CustomError ({ statusCode }) {
                   <h1 className="title">404</h1>
                   <h2 className="subtitle">Página no encontrada</h2>
                   <Link href="/">
-                    Ir a la portada
+                    <a>
+                      Ir a la portada
+                    </a>
                   </Link>
                 </>
               ) : (

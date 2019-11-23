@@ -5,7 +5,9 @@ export function NavComponent ({
   items,
   active = '',
   onPrefetch = () => null,
-  onGoto = () => null
+  onGoto = () => null,
+  lateralActive,
+  onToggleLateral
 }) {
   const [NavbarBurgerExpanded, SetNavbarBurgerExpanded] = useState(false)
 
@@ -17,19 +19,37 @@ export function NavComponent ({
             <img src="/alatele.svg" width="112" height="28"></img>
             ALA-TELE
           </span>
-
-          <a
-            onClick={() => SetNavbarBurgerExpanded(!NavbarBurgerExpanded)}
-            role="button"
-            className={`navbar-burger burger ${NavbarBurgerExpanded ? 'is-active' : ''}`}
-            aria-label="menu"
-            aria-expanded={NavbarBurgerExpanded ? 'true' : 'false'}
-            data-target="navbarBasicExample"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
+          {
+            items.length
+              ? (
+                <a
+                  onClick={() => SetNavbarBurgerExpanded(!NavbarBurgerExpanded)}
+                  role="button"
+                  className={`navbar-burger burger ${NavbarBurgerExpanded ? 'is-active' : ''}`}
+                  aria-label="menu"
+                  aria-expanded={NavbarBurgerExpanded ? 'true' : 'false'}
+                  data-target="navbarBasicExample"
+                >
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              )
+              : (
+                <a
+                  onClick={onToggleLateral}
+                  role="button"
+                  className={`navbar-burger burger lateral ${lateralActive ? 'is-active' : ''}`}
+                  aria-label="menu"
+                  aria-expanded={NavbarBurgerExpanded ? 'true' : 'false'}
+                  data-target="navbarBasicExample"
+                >
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              )
+          }
         </div>
 
         <div id="navbarBasicExample" className={`navbar-menu ${NavbarBurgerExpanded ? 'is-active' : ''}`}>
@@ -53,7 +73,7 @@ export function NavComponent ({
   )
 }
 
-export default function Nav ({ items, active }) {
+export default function Nav ({ items = [], active = '', onToggleLateral, lateralActive }) {
   const router = useRouter()
 
   function onPrefetch (url) {
@@ -69,5 +89,7 @@ export default function Nav ({ items, active }) {
     active={active}
     onPrefetch={onPrefetch}
     onGoto={onGoto}
+    onToggleLateral={onToggleLateral}
+    lateralActive={lateralActive}
   />
 }

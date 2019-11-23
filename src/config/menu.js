@@ -1,43 +1,50 @@
 export const items = [
   {
-    label: 'Perfil',
+    label: 'Editar Perfil',
     menu: [
       {
         label: 'Contacto',
-        url: '/contacto'
-      },
-      {
-        label: 'Segmentación',
-        url: '/segmentacion'
-      },
-      {
-        label: 'Trasfondo',
-        url: '/trasfondo'
+        url: '/perfil/contacto'
       },
       {
         label: 'Imagen',
-        url: '/imagen'
+        url: '/perfil/imagen'
+      },
+      {
+        label: 'Segmentación',
+        url: '/perfil/segmentacion'
+      },
+      {
+        label: 'Trasfondo',
+        url: '/perfil/trasfondo'
       },
       {
         label: 'Redes sociales',
-        url: '/redes-sociales'
+        url: '/perfil/redes-sociales'
+      },
+      {
+        label: 'Concursos',
+        url: '/perfil/concursos'
+      },
+      {
+        label: 'Vista previa',
+        url: '/panel/vista-previa',
+        hidden: true
       }
     ]
   },
   {
-    label: 'Preferencias',
+    label: 'Panel de control',
     menu: [
       {
-        label: 'Concursos',
-        url: '/concursos'
+        label: 'Vista previa',
+        url: '/panel/concursos',
+        icon: 'address-card'
       },
       {
-        label: 'Notificaciones',
-        url: '/notificaciones'
-      },
-      {
-        label: 'Acciones',
-        url: '/acciones'
+        label: 'Usuario',
+        url: '/acciones',
+        icon: 'user'
       }
     ]
   }
