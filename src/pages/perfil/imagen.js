@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import '../../styles/style.sass'
 import { withRedux } from '../../lib/redux'
 import { toggleLateral, dataChange } from '../../store'
+import useUpdateCompletion from '../../lib/completion'
 
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
@@ -40,13 +41,7 @@ export function PerfilImagen () {
     completion
   }))
 
-  useEffect(() => {
-    dispatch({
-      type: 'SETCOMPLETION',
-      name: 'Imagen',
-      value: Object.values(defaultValues).every(value => value)
-    })
-  }, Object.values(defaultValues))
+  useUpdateCompletion(dispatch, 'Imagen', defaultValues)
 
   const onToggleLateral = toggleLateral(dispatch, lateralActive)
   const onDataChange = dataChange(dispatch)

@@ -1,15 +1,18 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import { computePercent } from '../lib/completion'
 
 export function MenuComponent ({
-  percent,
   items,
+  percent,
   completion = {},
   active = '',
   onPrefetch = () => null,
   onGoto = () => null,
   lateralActive
 }) {
+  console.log(percent)
+  console.log(percent['Editar perfil'])
   return (
     <aside
       id="menu"
@@ -19,7 +22,10 @@ export function MenuComponent ({
         {items.map(item => (
           <React.Fragment key={item.label}>
             <p className="menu-label">
-              {item.label} {percent && <span>- {percent}%</span>}
+              {item.label} {percent[item.label]
+                ? <span>- {(100 * percent[item.label]).toFixed()}%</span>
+                : null
+              }
             </p>
             <ul className="menu-list">
               {item.menu.map(link => !link.hidden && (
@@ -29,7 +35,7 @@ export function MenuComponent ({
                     onMouseEnter={() => onPrefetch(link.url)}
                     onClick={() => onGoto(link.url)}
                   >
-                    <span className={`icon ${completion[link.label] ? 'has-text-success' : 'has-text-grey-light'}`}>
+                    <span className={`icon ${completion[link.label] === 1 ? 'has-text-success' : 'has-text-grey-light'}`}>
                       <i className={`fas fa-${link.icon || 'check'}`}></i>
                     </span>&nbsp;
                     {link.label}
@@ -44,7 +50,7 @@ export function MenuComponent ({
   )
 }
 
-export default function Menu ({ items, completion, active, percent, lateralActive }) {
+export default function Menu ({ items, completion, active, lateralActive }) {
   const router = useRouter()
 
   function onPrefetch (url) {
@@ -55,12 +61,12 @@ export default function Menu ({ items, completion, active, percent, lateralActiv
     router.push(url)
   }
 
-  console.log(completion)
-
   return <MenuComponent
     items={items}
     active={active}
-    percent = {percent}
+    percent = {{
+      'Editar Perfil': computePercent(completion)
+    }}
     onPrefetch={onPrefetch}
     onGoto={onGoto}
     completion={completion}

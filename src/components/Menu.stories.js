@@ -1,28 +1,39 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { withKnobs, object, text, number } from '@storybook/addon-knobs'
+import { withKnobs, object, text } from '@storybook/addon-knobs'
 
-import { MenuComponent } from './Menu'
+import Menu, { MenuComponent } from './Menu'
 
 import { items } from '../config/menu'
 
+const completion = {
+  Contacto: 0,
+  Imagen: 0,
+  Segmentación: 0,
+  Trasfondo: 0,
+  'Redes sociales': 0,
+  Concursos: 0
+}
+
 storiesOf('Menu', module)
   .addDecorator(withKnobs)
-  .add('default', () => <MenuComponent
-    percent={number('percent', '5')}
-    active={text('active', items[0].menu[0].label)}
-    items={object('items', [...items])}
-    onGoto={action('onGoto')}
-    onPrefetch={action('onPrefetch')}
-  />)
-  .add('done', () => <MenuComponent
-    percent={number('percent', '100')}
-    active={text('active', items[0].menu[0].label)}
-    items={object('items', [{
-      ...items[0],
-      menu: items[0].menu.map((link) => ({ ...link, done: true }))
-    }, items[1]])}
-    onGoto={action('onGoto')}
-    onPrefetch={action('onPrefetch')}
-  />)
+  .add('component', () => (
+    <MenuComponent
+      percent={object('percent', {
+        'Editar Perfil': 0.5
+      })}
+      completion={object('completion', completion)}
+      active={text('active', items[0].menu[0].label)}
+      items={object('items', [...items])}
+      onGoto={action('onGoto')}
+      onPrefetch={action('onPrefetch')}
+    />
+  ))
+  .add('connected', () => (
+    <Menu
+      completion={object('completion', completion)}
+      active={text('active', items[0].menu[0].label)}
+      items={object('items', [...items])}
+    />
+  ))

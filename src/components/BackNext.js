@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
-export function BackNextComponent ({ prev, next, onPrefeth, onGoto }) {
+export function BackNextComponent ({ prev, next, onPrefetch, onGoto }) {
   return (
     <div className="field is-grouped">
       { prev && (
@@ -9,7 +9,7 @@ export function BackNextComponent ({ prev, next, onPrefeth, onGoto }) {
           <button
             type="button"
             className="button"
-            onMouseEnter={() => onPrefeth(prev)}
+            onMouseEnter={() => onPrefetch(prev)}
             onClick={() => onGoto(prev)}
           >
             <span className="icon is-small">
@@ -26,7 +26,7 @@ export function BackNextComponent ({ prev, next, onPrefeth, onGoto }) {
           <button
             type="button"
             className="button is-primary"
-            onMouseEnter={() => onPrefeth(next)}
+            onMouseEnter={() => onPrefetch(next)}
             onClick={() => onGoto(next)}
           >
             <span>
@@ -56,7 +56,7 @@ export default function BackNext ({ items, active }) {
   const prev = items[step - 1]
   const next = items[step + 1]
 
-  function onPrefeth (item) {
+  function onPrefetch (item) {
     router.prefetch(item.url)
   }
 
@@ -67,7 +67,7 @@ export default function BackNext ({ items, active }) {
   return <BackNextComponent
     prev={prev}
     next={next}
-    onPrefeth={onPrefeth}
+    onPrefetch={onPrefetch}
     onGoto={onGoto}
   />
 }

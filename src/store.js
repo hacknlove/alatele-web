@@ -17,12 +17,12 @@ const initialState = {
       destreza: false
     },
     completion: {
-      Contacto: false,
-      Imagen: false,
-      Segmentación: false,
-      Trasfondo: false,
-      'Redes sociales': false,
-      Concursos: false
+      Contacto: 0,
+      Imagen: 0,
+      Segmentación: 0,
+      Trasfondo: 0,
+      'Redes sociales': 0,
+      Concursos: 0
     }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import '../../styles/style.sass'
@@ -7,6 +7,7 @@ import { toggleLateral, dataChange } from '../../store'
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
 import { items } from '../../config/menu'
+import useUpdateCompletion from '../../lib/completion'
 
 import PerfilContactoForm from '../../components/PerfilContactoForm'
 import BackNext from '../../components/BackNext'
@@ -38,13 +39,7 @@ export function PerfilContacto () {
     completion
   }))
 
-  useEffect(() => {
-    dispatch({
-      type: 'SETCOMPLETION',
-      name: 'Contacto',
-      value: Object.values(defaultValues).every(value => value)
-    })
-  }, Object.values(defaultValues))
+  useUpdateCompletion(dispatch, 'Contacto', defaultValues)
 
   const onToggleLateral = toggleLateral(dispatch, lateralActive)
   const onDataChange = dataChange(dispatch)

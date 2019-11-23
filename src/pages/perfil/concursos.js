@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import '../../styles/style.sass'
@@ -7,7 +7,7 @@ import { toggleLateral, concursosChecked } from '../../store'
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
 import { items } from '../../config/menu'
-
+import useUpdateCompletion from '../../lib/completion'
 import PerfilConcursosForm from '../../components/PerfilConcursosForm'
 import BackNext from '../../components/BackNext'
 
@@ -32,13 +32,7 @@ export function PerfilConcursos () {
     lateralActive
   }))
 
-  useEffect(() => {
-    dispatch({
-      type: 'SETCOMPLETION',
-      name: 'Concursos',
-      value: defaultValues && Object.values(defaultValues).some(value => value)
-    })
-  }, [defaultValues])
+  useUpdateCompletion(dispatch, 'Concursos', defaultValues)
 
   const onToggleLateral = toggleLateral(dispatch, lateralActive)
   const onCheckedChange = concursosChecked(dispatch)

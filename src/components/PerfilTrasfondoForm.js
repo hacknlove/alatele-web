@@ -17,6 +17,7 @@ export default function PerfilTrasfondoForm ({
             className="textarea"
             name="presentation"
             placeholder="Preséntate brevemente"
+            onBlur={onDataChange}
             ref={register}
           />
         </div>

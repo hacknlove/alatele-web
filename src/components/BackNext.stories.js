@@ -1,18 +1,25 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { withKnobs, object } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
+import { withKnobs, object, text } from '@storybook/addon-knobs'
 
-import BackNext from './BackNext'
+import { items } from '../config/menu'
+import BackNext, { BackNextComponent } from './BackNext'
 
 storiesOf('BackNext', module)
   .addDecorator(withKnobs)
-  .add('default', () => <BackNext buttons={object('buttons', [
-    {
-      label: 'Atrás',
-      url: '/atras'
-    },
-    {
-      label: 'Adelante',
-      url: '/Adelante'
-    }
-  ])} />)
+  .add('component', () => (
+    <BackNextComponent
+      prev={object('items', items[0].menu[1])}
+      next={object('items', items[0].menu[3])}
+      onPrefetch={action('onPrefetch')}
+      onGoto={action('onGoto')}
+      active
+    />
+  ))
+  .add('connected', () => (
+    <BackNext
+      items={object('items', items[0].menu)}
+      active={text('active', 'Imagen')}
+    />
+  ))
