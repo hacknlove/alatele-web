@@ -3,8 +3,6 @@ import { useEffect } from 'react'
 export default function useUpdateCompletion (dispatch, name, object) {
   const values = Object.values(object)
 
-  console.log(values)
-
   useEffect(() => {
     dispatch({
       type: 'SETCOMPLETION',

@@ -16,7 +16,7 @@ export function BackNextComponent ({ prev, next, onPrefetch, onGoto }) {
               <i className="fas fa-arrow-left"></i>
             </span>
             <span>
-              {prev.label}
+              {prev.button || 'Atrás'}
             </span>
           </button>
         </div>
@@ -30,7 +30,7 @@ export function BackNextComponent ({ prev, next, onPrefetch, onGoto }) {
             onClick={() => onGoto(next)}
           >
             <span>
-              {next.label}
+              {next.button || 'Siguiente'}
             </span>
             <span className="icon is-small">
               <i className="fas fa-arrow-right"></i>
@@ -45,16 +45,17 @@ export function BackNextComponent ({ prev, next, onPrefetch, onGoto }) {
 export default function BackNext ({ items, active }) {
   const router = useRouter()
 
+  const itemList = [...items[0].menu, items[1].menu]
   let step = 0
-  items.some(item => {
+  itemList.some(item => {
     if (item.label === active) {
       return true
     }
     step++
   })
 
-  const prev = items[step - 1]
-  const next = items[step + 1]
+  const prev = itemList[step - 1]
+  const next = itemList[step + 1]
 
   function onPrefetch (item) {
     router.prefetch(item.url)

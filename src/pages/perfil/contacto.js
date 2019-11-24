@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Head from 'next/head'
 
 import '../../styles/style.sass'
 import { withRedux } from '../../lib/redux'
@@ -7,7 +8,7 @@ import { toggleLateral, dataChange } from '../../store'
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
 import { items } from '../../config/menu'
-import useUpdateCompletion from '../../lib/completion'
+import useUpdateCompletion, { computePercent } from '../../lib/completion'
 
 import PerfilContactoForm from '../../components/PerfilContactoForm'
 import BackNext from '../../components/BackNext'
@@ -43,12 +44,17 @@ export function PerfilContacto () {
 
   const onToggleLateral = toggleLateral(dispatch, lateralActive)
   const onDataChange = dataChange(dispatch)
-
+  const percent = `${(100 * computePercent(completion)).toFixed()}%`
+  items[0].label = `Editar Perfil - ${percent}`
   return (
     <React.Fragment>
+      <Head>
+        <title>Editar perfil {percent} - Contacto </title>
+      </Head>
       <Nav
         lateralActive={lateralActive}
         onToggleLateral={onToggleLateral}
+        percent={percent}
       />
       <div className="container">
         <section className="columns">
@@ -64,7 +70,7 @@ export function PerfilContacto () {
             <PerfilContactoForm
               defaultValues={defaultValues}
               onDataChange={onDataChange}
-              botonera={<BackNext items={items[0].menu} active="Contacto" />}
+              botonera={<BackNext items={items} active="Contacto" />}
             />
           </section>
         </section>

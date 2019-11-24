@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import { PerfilImagenFormComponent } from './PerfilImagenForm'
+import PerfilImagenForm from './PerfilImagenForm'
 
 const actions = {
   onCancel: action('onCancel'),
@@ -10,4 +10,4 @@ const actions = {
 }
 
 storiesOf('PerfilImagen', module)
-  .add('default', () => <PerfilImagenFormComponent {...actions} />)
+  .add('default', () => <PerfilImagenForm {...actions} />)

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Head from 'next/head'
 
 import '../../styles/style.sass'
 import { withRedux } from '../../lib/redux'
@@ -8,7 +9,7 @@ import { toggleLateral, dataChange } from '../../store'
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
 import { items } from '../../config/menu'
-import useUpdateCompletion from '../../lib/completion'
+import useUpdateCompletion, { computePercent } from '../../lib/completion'
 
 import PerfilTrasfondoForm from '../../components/PerfilTrasfondoForm'
 import BackNext from '../../components/BackNext'
@@ -47,8 +48,13 @@ export function PerfilTrasfondo () {
   const onToggleLateral = toggleLateral(dispatch, lateralActive)
   const onDataChange = dataChange(dispatch)
 
+  const percent = `${(100 * computePercent(completion)).toFixed()}%`
+  items[0].label = `Editar Perfil - ${percent}`
   return (
     <React.Fragment>
+      <Head>
+        <title>Editar perfil {percent} - Trasfondo </title>
+      </Head>
       <Nav
         lateralActive={lateralActive}
         onToggleLateral={onToggleLateral}
@@ -67,7 +73,7 @@ export function PerfilTrasfondo () {
             <PerfilTrasfondoForm
               defaultValues={defaultValues}
               onDataChange={onDataChange}
-              botonera={<BackNext items={items[0].menu} active="Trasfondo" />}
+              botonera={<BackNext items={items} active="Trasfondo" />}
             />
           </section>
         </section>

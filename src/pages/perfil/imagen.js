@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Head from 'next/head'
 
 import '../../styles/style.sass'
 import { withRedux } from '../../lib/redux'
 import { toggleLateral, dataChange } from '../../store'
-import useUpdateCompletion from '../../lib/completion'
+import useUpdateCompletion, { computePercent } from '../../lib/completion'
 
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
@@ -71,11 +72,17 @@ export function PerfilImagen () {
     })
   }
 
+  const percent = `${(100 * computePercent(completion)).toFixed()}%`
+  items[0].label = `Editar Perfil - ${percent}`
   return (
     <React.Fragment>
+      <Head>
+        <title>Editar perfil {percent} - Imagen </title>
+      </Head>
       <Nav
         lateralActive={lateralActive}
         onToggleLateral={onToggleLateral}
+        percent={percent}
       />
       <div className="container">
         <section className="columns">
@@ -87,12 +94,12 @@ export function PerfilImagen () {
             completion={completion}
           />
           <section className="section column is-10">
-            <h1 className="title is-5"> Imagen </h1>
+            <h1 className="title is-5"> Imagen</h1>
             <PerfilImagenForm
               defaultValues={defaultValues}
               onDataChange={onDataChange}
               onLoadFile={onLoadFile}
-              botonera={<BackNext items={items[0].menu} active="Imagen" />}
+              botonera={<BackNext items={items} active="Imagen" />}
             />
           </section>
         </section>

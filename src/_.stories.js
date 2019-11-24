@@ -1,10 +1,10 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import Home from './index'
-import Productoras from './productoras'
-import PerfilContacto from './perfil/contacto'
-import PerfilSegmentation from './perfil/segmentacion'
+import Home from './pages/index'
+import Productoras from './pages/productoras'
+import PerfilContacto from './pages/perfil/contacto'
+import PerfilSegmentation from './pages/perfil/segmentacion'
 
 storiesOf('Pages', module)
   .addDecorator(story => (

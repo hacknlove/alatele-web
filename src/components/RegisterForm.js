@@ -68,16 +68,12 @@ export default function RegisterForm ({ onRegister, onLogin, defaultValues, load
           )}
         </div>
 
-        <div className="field">
+        <div className="field is-grouped">
           <div className="control">
             <button className="button is-primary">Crear perfil</button>
           </div>
-        </div>
-        <hr/>
-        <div className="field">
-          <label className="label">Ya tienes una cuenta</label>
           <div className="control">
-            <button type="button" className="button is-link" onClick={() => setloginActive(true)}>Entrar</button>
+            <button type="button" className="button" onClick={() => setloginActive(true)}>Iniciar sesión</button>
           </div>
         </div>
       </form>

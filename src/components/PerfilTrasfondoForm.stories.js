@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import { PerfilTrasfondoFormComponent } from './PerfilTrasfondoForm'
+import PerfilTrasfondoForm from './PerfilTrasfondoForm'
 
 const actions = {
   onCancel: action('onCancel'),
@@ -10,4 +10,4 @@ const actions = {
 }
 
 storiesOf('PerfilTrasfondo', module)
-  .add('default', () => <PerfilTrasfondoFormComponent {...actions} />)
+  .add('default', () => <PerfilTrasfondoForm {...actions} />)

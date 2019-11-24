@@ -8,11 +8,26 @@ import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
 import { items } from '../../config/menu'
 
-import PanelVistaPrevia from '../../components/PanelVistaPrevia'
+import PanelVistaPreviaBuscador from '../../components/PanelVistaPreviaBuscador'
+import BackNext from '../../components/BackNext'
 
 export function PerfilConcursos () {
-  const { perfil } = useSelector(({ perfil }) => ({ perfil }))
+  const dispatch = useDispatch()
 
+  const {
+    perfil,
+    lateralActive
+  } = useSelector(({
+    perfil,
+    ux: {
+      lateralActive
+    }
+  }) => ({
+    perfil,
+    lateralActive
+  }))
+
+  const onToggleLateral = toggleLateral(dispatch, lateralActive)
 
   return (
     <React.Fragment>
@@ -24,14 +39,17 @@ export function PerfilConcursos () {
         <section className="columns">
           <Menu
             items={items}
-            active="Concursos"
+            active="Ver en buscador"
             lateralActive={lateralActive}
             onToggleLateral={onToggleLateral}
-            completion={completion}
+            completion={perfil.completion}
           />
           <section className="section column is-10">
-            <h1 className="title is-5"> Concursos </h1>
-            <PanelVistaPrevia perfil={perfil} />
+            <h1 className="title is-5"> Ver en buscador </h1>
+            <PanelVistaPreviaBuscador
+              perfil={perfil}
+              botonera={<BackNext items={items} active="Ver en buscador" />}
+            />
           </section>
         </section>
       </div>

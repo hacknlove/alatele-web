@@ -27,9 +27,8 @@ export const items = [
         url: '/perfil/concursos'
       },
       {
-        label: 'Vista previa',
-        url: '/panel/vista-previa',
-        hidden: true
+        button: 'Ver',
+        url: '/control/vista-previa-buscador'
       }
     ]
   },
@@ -37,9 +36,21 @@ export const items = [
     label: 'Panel de control',
     menu: [
       {
-        label: 'Vista previa',
-        url: '/panel/concursos',
+        url: '/perfil/concursos'
+      },
+      {
+        label: 'Ver en buscador',
+        url: '/control/vista-previa-buscador',
         icon: 'address-card'
+      },
+      {
+        label: 'Ver en ficha',
+        url: '/control/vista-previa-ficha',
+        icon: 'address-card'
+      },
+      {
+        button: 'Editar',
+        url: '/perfil/contacto'
       },
       {
         label: 'Usuario',

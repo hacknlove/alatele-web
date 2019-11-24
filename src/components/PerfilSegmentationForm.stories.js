@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import { PerfilSegmentationFormComponent } from './PerfilSegmentationForm'
+import PerfilSegmentationForm from './PerfilSegmentationForm'
 
 const actions = {
   onCancel: action('onCancel'),
@@ -10,4 +10,4 @@ const actions = {
 }
 
 storiesOf('PerfilSegmentation', module)
-  .add('default', () => <PerfilSegmentationFormComponent {...actions} />)
+  .add('default', () => <PerfilSegmentationForm {...actions} />)

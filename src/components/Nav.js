@@ -4,20 +4,20 @@ import { useRouter } from 'next/router'
 export function NavComponent ({
   items,
   active = '',
+  percent,
   onPrefetch = () => null,
   onGoto = () => null,
   lateralActive,
   onToggleLateral
 }) {
   const [NavbarBurgerExpanded, SetNavbarBurgerExpanded] = useState(false)
-
   return (
     <nav id="topbar" className="navbar" role="navigation" aria-label="main navigation">
       <div className="container">
         <div className="navbar-brand">
           <span className="navbar-item">
             <img src="/alatele.svg" width="112" height="28"></img>
-            ALA-TELE
+            ALA-TELE <span className="is-hidden-tablet">{percent && `- ${percent}`}</span>
           </span>
           {
             items.length
@@ -73,7 +73,7 @@ export function NavComponent ({
   )
 }
 
-export default function Nav ({ items = [], active = '', onToggleLateral, lateralActive }) {
+export default function Nav ({ items = [], active = '', onToggleLateral, lateralActive, percent }) {
   const router = useRouter()
 
   function onPrefetch (url) {
@@ -91,5 +91,6 @@ export default function Nav ({ items = [], active = '', onToggleLateral, lateral
     onGoto={onGoto}
     onToggleLateral={onToggleLateral}
     lateralActive={lateralActive}
+    percent={percent}
   />
 }
