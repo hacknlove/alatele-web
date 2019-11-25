@@ -45,7 +45,8 @@ export function BackNextComponent ({ prev, next, onPrefetch, onGoto }) {
 export default function BackNext ({ items, active }) {
   const router = useRouter()
 
-  const itemList = [...items[0].menu, items[1].menu]
+  const itemList = [...items[0].menu, ...items[1].menu]
+
   let step = 0
   itemList.some(item => {
     if (item.label === active) {

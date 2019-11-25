@@ -4,15 +4,17 @@ import Head from 'next/head'
 
 import '../../styles/style.sass'
 import { withRedux } from '../../lib/redux'
-import { toggleLateral, concursosChecked } from '../../store'
+import { toggleLateral, dataChange } from '../../store'
+
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
 import { items } from '../../config/menu'
 import useUpdateCompletion, { computePercent } from '../../lib/completion'
-import PerfilConcursosForm from '../../components/PerfilConcursosForm'
+
+import PerfilACercaDeTiForm from '../../components/PerfilACercaDeTiForm'
 import BackNext from '../../components/BackNext'
 
-export function PerfilConcursos () {
+export function PerfilACercaDeTi () {
   const dispatch = useDispatch()
 
   const {
@@ -21,49 +23,53 @@ export function PerfilConcursos () {
     completion
   } = useSelector(({
     perfil: {
-      concursos,
+      presentation,
       completion
     },
     ux: {
       lateralActive
     }
   }) => ({
-    defaultValues: concursos,
-    completion,
-    lateralActive
+    defaultValues: {
+      presentation
+    },
+    lateralActive,
+    completion
   }))
 
-  useUpdateCompletion(dispatch, 'Concursos', defaultValues)
+  useUpdateCompletion(dispatch, 'A Cerca De Ti', defaultValues)
 
   const onToggleLateral = toggleLateral(dispatch, lateralActive)
-  const onCheckedChange = concursosChecked(dispatch)
+  const onDataChange = dataChange(dispatch)
+
   const percent = `${(100 * computePercent(completion)).toFixed()}%`
   items[0].label = `Editar Perfil - ${percent}`
   return (
     <React.Fragment>
       <Head>
-        <title>Editar perfil {percent} - Concursos </title>
+        <title>Editar perfil {percent} - A Cerca De Ti </title>
       </Head>
       <Nav
         lateralActive={lateralActive}
         onToggleLateral={onToggleLateral}
-        percent={percent}
       />
       <div className="container">
-        <section className="columns">
+        <section className="has-lateral-menu">
+
           <Menu
             items={items}
-            active="Concursos"
+            active={'A Cerca De Ti'}
             lateralActive={lateralActive}
             onToggleLateral={onToggleLateral}
             completion={completion}
           />
-          <section className="section column is-10">
-            <h1 className="title is-5"> Concursos </h1>
-            <PerfilConcursosForm
+          <section className="section main">
+
+            <h1 className="title is-5"> A Cerca De Ti </h1>
+            <PerfilACercaDeTiForm
               defaultValues={defaultValues}
-              onCheckedChange={onCheckedChange}
-              botonera={<BackNext items={items} active="Concursos" />}
+              onDataChange={onDataChange}
+              botonera={<BackNext items={items} active="A Cerca De Ti" />}
             />
           </section>
         </section>
@@ -72,4 +78,4 @@ export function PerfilConcursos () {
   )
 }
 
-export default withRedux(PerfilConcursos)
+export default withRedux(PerfilACercaDeTi)

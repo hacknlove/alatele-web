@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, object } from '@storybook/addon-knobs'
 
-import PanelVistaPreviaBuscador from './PanelVistaPreviaBuscador'
+import PanelVistaPreviaFicha from './PanelVistaPreviaFicha'
 
 const actions = {
   onCancel: action('onCancel'),
@@ -32,7 +32,7 @@ const perfil = {
   email: 'user@example.com',
   name: 'Fulanito de tal',
   phone: '612 345 678',
-  video: 'https://youtu.be/UkMFNx3WRbM',
+  video: 'https://www.youtube.com/embed/7FG7nTUYowQ',
   face: 'https://www.thispersondoesnotexist.com/image',
   birthday: '1979-09-21',
   state: 'Asturias',
@@ -57,7 +57,7 @@ const perfil = {
   linkedin: 'linkedin'
 }
 
-storiesOf('PanelVistaPreviaBuscador', module)
+storiesOf('PanelVistaPreviaFicha', module)
   .addDecorator(withKnobs)
   .addDecorator(story => (
     <section className="section">
@@ -67,7 +67,7 @@ storiesOf('PanelVistaPreviaBuscador', module)
     </section>
   ))
   .add('default', () => (
-    <PanelVistaPreviaBuscador
+    <PanelVistaPreviaFicha
       perfil={object('perfil', perfil)}
       {...actions}
     />

@@ -4,17 +4,15 @@ import Head from 'next/head'
 
 import '../../styles/style.sass'
 import { withRedux } from '../../lib/redux'
-import { toggleLateral, dataChange } from '../../store'
-
+import { toggleLateral, preferenciasChecked } from '../../store'
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
 import { items } from '../../config/menu'
 import useUpdateCompletion, { computePercent } from '../../lib/completion'
-
-import PerfilTrasfondoForm from '../../components/PerfilTrasfondoForm'
+import PerfilPreferenciasForm from '../../components/PerfilPreferenciasForm'
 import BackNext from '../../components/BackNext'
 
-export function PerfilTrasfondo () {
+export function PerfilPreferencias () {
   const dispatch = useDispatch()
 
   const {
@@ -23,57 +21,51 @@ export function PerfilTrasfondo () {
     completion
   } = useSelector(({
     perfil: {
-      presentation,
-      anecdote,
-      dreams,
-      free,
+      preferencias,
       completion
     },
     ux: {
       lateralActive
     }
   }) => ({
-    defaultValues: {
-      presentation,
-      anecdote,
-      dreams,
-      free
-    },
-    lateralActive,
-    completion
+    defaultValues: preferencias,
+    completion,
+    lateralActive
   }))
 
-  useUpdateCompletion(dispatch, 'Trasfondo', defaultValues)
+  useUpdateCompletion(dispatch, 'Preferencias', defaultValues)
 
   const onToggleLateral = toggleLateral(dispatch, lateralActive)
-  const onDataChange = dataChange(dispatch)
-
+  const onCheckedChange = preferenciasChecked(dispatch)
   const percent = `${(100 * computePercent(completion)).toFixed()}%`
   items[0].label = `Editar Perfil - ${percent}`
   return (
     <React.Fragment>
       <Head>
-        <title>Editar perfil {percent} - Trasfondo </title>
+        <title>Editar perfil {percent} - Preferencias </title>
       </Head>
       <Nav
         lateralActive={lateralActive}
         onToggleLateral={onToggleLateral}
+        percent={percent}
       />
       <div className="container">
-        <section className="columns">
+        <section className="has-lateral-menu">
+
           <Menu
             items={items}
-            active={'Trasfondo'}
+            active="Preferencias"
             lateralActive={lateralActive}
             onToggleLateral={onToggleLateral}
             completion={completion}
           />
-          <section className="section column is-10">
-            <h1 className="title is-5"> Trasfondo </h1>
-            <PerfilTrasfondoForm
+          <section className="section main">
+
+            <h1 className="title is-5"> Preferencias </h1>
+            <PerfilPreferenciasForm
               defaultValues={defaultValues}
-              onDataChange={onDataChange}
-              botonera={<BackNext items={items} active="Trasfondo" />}
+              onCheckedChange={onCheckedChange}
+              botonera={<BackNext items={items} active="Preferencias" />}
             />
           </section>
         </section>
@@ -82,4 +74,4 @@ export function PerfilTrasfondo () {
   )
 }
 
-export default withRedux(PerfilTrasfondo)
+export default withRedux(PerfilPreferencias)

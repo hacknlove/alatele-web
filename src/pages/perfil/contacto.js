@@ -57,7 +57,8 @@ export function PerfilContacto () {
         percent={percent}
       />
       <div className="container">
-        <section className="columns">
+        <section className="has-lateral-menu">
+
           <Menu
             items={items}
             active="Contacto"
@@ -65,7 +66,8 @@ export function PerfilContacto () {
             onToggleLateral={onToggleLateral}
             completion={completion}
           />
-          <section className="section column is-10">
+          <section className="section main">
+
             <h1 className="title is-5"> Datos de contacto </h1>
             <PerfilContactoForm
               defaultValues={defaultValues}

@@ -11,20 +11,20 @@ export const items = [
         url: '/perfil/imagen'
       },
       {
-        label: 'Segmentación',
-        url: '/perfil/segmentacion'
-      },
-      {
-        label: 'Trasfondo',
-        url: '/perfil/trasfondo'
+        label: 'A Cerca De Ti',
+        url: '/perfil/a-cerca-de-ti'
       },
       {
         label: 'Redes sociales',
         url: '/perfil/redes-sociales'
       },
       {
-        label: 'Concursos',
-        url: '/perfil/concursos'
+        label: 'Datos personales',
+        url: '/perfil/segmentacion'
+      },
+      {
+        label: 'Preferencias',
+        url: '/perfil/preferencias'
       },
       {
         button: 'Ver',
@@ -36,12 +36,12 @@ export const items = [
     label: 'Panel de control',
     menu: [
       {
-        url: '/perfil/concursos'
+        url: '/perfil/preferencias'
       },
       {
         label: 'Ver en buscador',
         url: '/control/vista-previa-buscador',
-        icon: 'address-card'
+        icon: 'list'
       },
       {
         label: 'Ver en ficha',
@@ -53,9 +53,9 @@ export const items = [
         url: '/perfil/contacto'
       },
       {
-        label: 'Usuario',
-        url: '/acciones',
-        icon: 'user'
+        label: 'salir',
+        url: '/',
+        icon: 'sign-out-alt'
       }
     ]
   }

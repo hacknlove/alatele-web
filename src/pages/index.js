@@ -14,7 +14,7 @@ export function Home () {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    router.prefetch('/perfil/contacto')
+    router && router.prefetch('/perfil/contacto')
   }, [])
 
   function onRegister (data) {
@@ -40,20 +40,24 @@ export function Home () {
           </h2>
           <ol>
             <li>
-              <strong>Crea un perfil en ALATELE:</strong><br/>
-              Así las responsables del casting de tus concursos favoritos podrán encontrarte y seleccionarte.
+              <strong>Regístrate en ALATELE</strong><br/>
+              Es cómodo, gratis y sencillo.
             </li>
             <li>
-              <strong>Cuéntanos tus gustos, anécdotas, deseos, sueños...</strong><br/>
-              Despierta su curiosidad, hazles reír, emociónalas, haz que quieran conocerte.
+              <strong>Completa tu perfil</strong><br/>
+              Ningún campo es obligatorio, pero todos son importantes.
             </li>
             <li>
-              <strong>Completa tu perfil con fotos y videos:</strong><br/>
-              No se trata de deslumbrar, sino de encajar y tener química, y para eso nada mejor que ser tú.
+              <strong>Espera a que te llamen</strong><br/>
+              Los responsables de casting buscan concursantes en nuestra base de datos.
             </li>
             <li>
-              <strong>Incluye enlaces a tus redes sociales:</strong><br/>
-              Multiplicarás tus oportunidades de ser seleccionado.
+              <strong>Pasa los procesos de selección</strong><br/>
+              Tal vez te convoquen a un casting presencial, tal vez sea una llamada de teléfono.<br />
+            </li>
+            <li>
+              <strong>Sé tú mismo, y...</strong><br />
+               Mucha suerte.
             </li>
           </ol>
         </div>

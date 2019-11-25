@@ -5,7 +5,6 @@ import '../styles/style.sass'
 
 import { items } from '../config/nav'
 
-
 export default function Home () {
   return (
     <React.Fragment>
@@ -20,20 +19,16 @@ export default function Home () {
           </h2>
           <ol>
             <li>
-              <strong>Contrata un plan personalizado:</strong><br/>
-              Un gestor de cuentas definirá contigo un plan a tu medida.
+              <strong>Crea búsquedas filtradas</strong><br/>
+              Tendrás una interfaz limpia cómoda y rápida para trabajar eficazmente.
             </li>
             <li>
-              <strong>Comienza con una búsqueda simple (o avanzada)</strong><br/>
-              El primer paso de la selección no puede ser más rápido, cómodo y sencillo.
+              <strong>Pre-selecciona candidatos</strong><br/>
+               Crea y gestiona listas de candidatos pre-seleccionados
             </li>
             <li>
-              <strong>Explora los perfiles, selecciona, descarta y añade etiquetas:</strong><br/>
-              Las etiquetas que tú añades son sólo para ti, y te ayudarán en futuras búsquedas.
-            </li>
-            <li>
-              <strong>Imprime o exporta la selección:</strong><br/>
-              Podrás continuar el proceso con las herramientas que ya conoces y usas.
+              <strong>Exporta tus listas de candidatos pre-seleccionados</strong><br/>
+              Continua tu proceso de selección y casting con tus herramientas habituales
             </li>
           </ol>
         </div>

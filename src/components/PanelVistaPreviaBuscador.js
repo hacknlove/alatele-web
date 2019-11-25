@@ -15,10 +15,10 @@ function Item ({
     <article className="media">
       <figure className="media-left is-hidden-mobile with-buttons">
         <p className="image is-64x64">
-          <img className="is-rounded" src={face} />
+          <img src={face} />
         </p>
         <div className="field">
-          <button className="button is-small is-rounded is-fullwidth">
+          <button className="button is-small is-fullwidth is-primary">
             <span className="icon is-small">
               <i className="fas fa-plus" />
             </span>
@@ -27,7 +27,7 @@ function Item ({
       </figure>
       <div className="media-content">
         <div className="content">
-          <p>
+          <div>
             <a>
               <strong>{name} </strong>
             </a>
@@ -38,7 +38,7 @@ function Item ({
             <div className="has-3-lines">
               {presentation}
             </div>
-          </p>
+          </div>
         </div>
         <nav className="level is-mobile">
           <div className="level-left">
@@ -50,6 +50,13 @@ function Item ({
               ))
             }
           </div>
+          <div className="level-left is-hidden-tablet">
+            <button className="button is-small is-primary">
+              <span className="icon is-small">
+                <i className="fas fa-plus" />
+              </span>
+            </button>
+          </div>
         </nav>
       </div>
     </article>
@@ -60,8 +67,8 @@ function Spans ({ min, max }) {
   let n = min + Math.floor(Math.random() * (max - min))
   const spans = []
   while (n) {
-    spans.push(<span key={n--}>{' '.repeat(Math.random() * 8 + 1)}</span>)
-    spans.push(<wbr />)
+    spans.push(<span key={`span${n}`}>{' '.repeat(Math.random() * 8 + 1)}</span>)
+    spans.push(<wbr key={`wbr${n--}`} />)
   }
   return (
     <React.Fragment>
@@ -75,10 +82,10 @@ function Dummy () {
     <article className="media is-dummy">
       <figure className="media-left is-hidden-mobile with-buttons">
         <p className="image is-64x64">
-          <img className="is-rounded" src={Math.random() < 0.5 ? '/chico1.jpg' : '/chica1.jpg'} />
+          <img src={Math.random() < 0.5 ? '/chico1.jpg' : '/chica1.jpg'} />
         </p>
         <div className="field">
-          <button className="button is-small is-rounded is-fullwidth">
+          <button className="button is-small is-fullwidth">
             <span className="icon is-small">
               <i className="fas fa-plus" />
             </span>
@@ -87,14 +94,14 @@ function Dummy () {
       </figure>
       <div className="media-content">
         <div className="content">
-          <p>
+          <div>
             <strong><Spans min={2} max={4} /></strong>
             <small> <Spans min={0} max={2} /></small>
             <br />
             <div className="has-3-lines">
               <Spans min={10} max={50} />
             </div>
-          </p>
+          </div>
         </div>
         <nav className="level is-mobile">
           <div className="level-left">
@@ -106,6 +113,13 @@ function Dummy () {
               ))
             }
           </div>
+          <div className="level-left is-hidden-tablet">
+            <button className="button is-small">
+              <span className="icon is-small">
+                <i className="fas fa-plus" />
+              </span>
+            </button>
+          </div>
         </nav>
       </div>
     </article>
@@ -114,7 +128,7 @@ function Dummy () {
 
 export default function vistaPrevia ({ perfil, botonera }) {
   return (
-    <div className="box">
+    <div className="box is-fullscreen-in-mobile">
       <hr/>
       <Dummy />
       <Item perfil={perfil} />

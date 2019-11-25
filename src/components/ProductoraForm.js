@@ -9,7 +9,7 @@ export default function RegisterForm ({ onSubmit }) {
   }
 
   return (
-    <div className="box" id="register">
+    <div className="box is-narrow">
       <form onSubmit={handleSubmit(onLocalSubmit)}>
         <div className="field">
           <label className="label">Nosotros te escribimos</label>
@@ -51,14 +51,7 @@ export default function RegisterForm ({ onSubmit }) {
 
         <div className="field">
           <div className="control">
-            <button className="button is-primary">Estoy interesado</button>
-          </div>
-        </div>
-        <hr/>
-        <div className="field">
-        <label className="label">Ya tienes una cuenta</label>
-          <div className="control">
-            <button className="button is-link">Entrar</button>
+            <button className="button is-primary is-fullwidth">Estoy interesado</button>
           </div>
         </div>
       </form>

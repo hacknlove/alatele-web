@@ -25,7 +25,6 @@ export function PerfilImagen () {
   } = useSelector(({
     perfil: {
       face,
-      body,
       video,
       completion
     },
@@ -35,7 +34,6 @@ export function PerfilImagen () {
   }) => ({
     defaultValues: {
       face,
-      body,
       video
     },
     lateralActive,
@@ -53,8 +51,7 @@ export function PerfilImagen () {
     const url = URL.createObjectURL(files[0])
     setcropimage({
       url,
-      aspect: name === 'face' ? 1 : 3 / 4,
-      cropShape: name === 'face' ? 'round' : 'rect',
+      aspect: 1,
       onCancel () {
         setcropimage(null)
         URL.revokeObjectURL(url)
@@ -85,7 +82,8 @@ export function PerfilImagen () {
         percent={percent}
       />
       <div className="container">
-        <section className="columns">
+        <section className="has-lateral-menu">
+
           <Menu
             items={items}
             active={'Imagen'}
@@ -93,7 +91,8 @@ export function PerfilImagen () {
             onToggleLateral={onToggleLateral}
             completion={completion}
           />
-          <section className="section column is-10">
+          <section className="section main">
+
             <h1 className="title is-5"> Imagen</h1>
             <PerfilImagenForm
               defaultValues={defaultValues}

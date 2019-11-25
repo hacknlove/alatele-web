@@ -47,7 +47,7 @@ export function PerfilSegmentation () {
     completion
   }))
 
-  useUpdateCompletion(dispatch, 'Segmentación', defaultValues)
+  useUpdateCompletion(dispatch, 'Datos personales', defaultValues)
 
   const onToggleLateral = toggleLateral(dispatch, lateralActive)
   const onDataChange = dataChange(dispatch)
@@ -56,7 +56,7 @@ export function PerfilSegmentation () {
   return (
     <React.Fragment>
       <Head>
-        <title>Editar perfil {percent} - Segmentación </title>
+        <title>Editar perfil {percent} - Datos personales </title>
       </Head>
       <Nav
         lateralActive={lateralActive}
@@ -64,21 +64,23 @@ export function PerfilSegmentation () {
         percent={percent}
       />
       <div className="container">
-        <section className="columns">
+        <section className="has-lateral-menu">
+
           <Menu
             items={items}
-            active={'Segmentación'}
+            active={'Datos personales'}
             lateralActive={lateralActive}
             onToggleLateral={onToggleLateral}
             completion={completion}
           />
-          <section className="section column is-10">
-            <h1 className="title is-5"> Segmentación </h1>
+          <section className="section main">
+
+            <h1 className="title is-5"> Datos personales </h1>
             <PerfilSegmentationForm
               segmentation={segmentation}
               defaultValues={defaultValues}
               onDataChange={onDataChange}
-              botonera={<BackNext items={items} active="Segmentación" />}
+              botonera={<BackNext items={items} active="Datos personales" />}
             />
           </section>
         </section>

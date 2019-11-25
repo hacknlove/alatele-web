@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import useForm from 'react-hook-form'
 
-import LoginForm from './LoginForm'
-
 export default function RegisterForm ({ onRegister, onLogin, defaultValues, loading }) {
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, errors, getValues, setError, setValue } = useForm({
     defaultValues,
     nativeValidation: false
   })
 
-  const [loginActive, setloginActive] = useState(false)
+  function onLoginHandler () {
+    onLogin(getValues(), setError)
+  }
 
   return (
-    <div className={`box ${loading ? 'is-loading' : ''}`} id="register">
+    <div className={`box is-narrow ${loading ? 'is-loading' : ''}`}>
       <form onSubmit={handleSubmit(onRegister)}>
         <div className="field">
           <label className="label">Correo electrónico</label>
@@ -68,20 +68,17 @@ export default function RegisterForm ({ onRegister, onLogin, defaultValues, load
           )}
         </div>
 
-        <div className="field is-grouped">
+        <div className="field">
           <div className="control">
-            <button className="button is-primary">Crear perfil</button>
+            <button className="button is-primary is-fullwidth" onMouseEnter={() => setValue('terms', true)}>Crear perfil</button>
           </div>
+        </div>
+        <div className="field">
           <div className="control">
-            <button type="button" className="button" onClick={() => setloginActive(true)}>Iniciar sesión</button>
+            <button type="button" className="button is-fullwidth" onClick={onLoginHandler} onMouseEnter={() => setValue('terms', true)}>Iniciar sesión</button>
           </div>
         </div>
       </form>
-      <LoginForm
-        active={loginActive}
-        onCancel={() => setloginActive(false)}
-        onLogin={onLogin}
-      />
     </div>
   )
 }

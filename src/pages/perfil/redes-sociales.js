@@ -61,7 +61,8 @@ export function PerfilRedesSociales () {
         percent={percent}
       />
       <div className="container">
-        <section className="columns">
+        <section className="has-lateral-menu">
+
           <Menu
             items={items}
             active="Redes sociales"
@@ -69,7 +70,8 @@ export function PerfilRedesSociales () {
             onToggleLateral={onToggleLateral}
             completion={completion}
           />
-          <section className="section column is-10">
+          <section className="section main">
+
             <h1 className="title is-5"> Redes sociales </h1>
             <PerfilRedesSocialesForm
               defaultValues={defaultValues}

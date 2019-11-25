@@ -10,10 +10,10 @@ import { items } from '../config/menu'
 const completion = {
   Contacto: 0,
   Imagen: 0,
-  Segmentación: 0,
-  Trasfondo: 0,
+  'Datos personales': 0,
+  'A cerca de ti': 0,
   'Redes sociales': 0,
-  Concursos: 0
+  Preferencias: 0
 }
 
 storiesOf('Menu', module)

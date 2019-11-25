@@ -6,7 +6,7 @@ const initialState = {
 
   },
   perfil: {
-    concursos: {
+    preferencias: {
       culturaGeneral: false,
       culturaAvanzada: false,
       inteligencia: false,
@@ -19,10 +19,10 @@ const initialState = {
     completion: {
       Contacto: 0,
       Imagen: 0,
-      Segmentación: 0,
-      Trasfondo: 0,
+      'Datos personales': 0,
+      'A Cerca De Ti': 0,
       'Redes sociales': 0,
-      Concursos: 0
+      Preferencias: 0
     }
   }
 }
@@ -50,8 +50,8 @@ function reducer (state = initialState, action) {
         ...state,
         perfil: {
           ...state.perfil,
-          concursos: {
-            ...state.perfil.concursos,
+          preferencias: {
+            ...state.perfil.preferencias,
             [action.name]: action.checked
           }
         }
@@ -104,7 +104,7 @@ export function dataChange (dispatch, where = 'perfil') {
   })
 }
 
-export function concursosChecked (dispatch) {
+export function preferenciasChecked (dispatch) {
   return ({
     target: {
       name,
